@@ -1,7 +1,7 @@
-
-
 export default function List(){
   return (
-    <div>List</div>
-  );
+    <div>
+      <h1>HI</h1>
+    </div>
+  )
 }

@@ -19,6 +19,11 @@ export default function NavBar(){
           display:flex;
           justify-content:space-between;
           padding:15px;
+          margin-bottom:1px;
+          position: sticky;
+          top: -1;
+          z-index:1;
+          text-decoration:underline;
         }
       `}</style>
     </nav>

@@ -4,18 +4,17 @@ import { useRouter } from "next/router";
 
 export default function Detail({ detail }) {
   const router=useRouter();
-  const handleClick=(bookName)=>{
-    router.push(`/list/${bookName}`);
+  const handleClick=(id)=>{
+    router.push(`/list/${id}`);
   }
   return (
     <div className="detail-list">
       <Seo title="Detail" />
-
       {detail.length > 0 ? (
         <div className="books-container">
           {detail.map((book) => (
             <div onClick={() => handleClick(book.list_name_encoded)} key={book.primary_isbn13} className="book-item">
-              <img src={book.book_image}/>
+              <img src={book.book_image} className="book-image" />
               <h3>{book.author}</h3>
               <p>Rank: {book.rank}</p>
               <a href={book.amazon_product_url} target="_blank" rel="noopener noreferrer">
@@ -29,20 +28,28 @@ export default function Detail({ detail }) {
       )}
 
       <style jsx>{`
+        .detail-list{
+          background-color:#C2AFA1;
+          border-radius:10px;
+        }
         .books-container {
           display: grid;
-          gap: 20px;
+          gap:1px 0px;
           grid-template-columns: repeat(4, 1fr);
         }
         .book-item {
+          border:3px solid gray;
+          border-radius:5px;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
-        .book-item img {
+        .book-image {
+          margin-top:10px;
           width: 100%;
-          max-width: 200px;
-          height: auto;
+          max-width: 150px;
+          height:100%;
+          max-height:250px;
         }
       `}</style>
     </div>
